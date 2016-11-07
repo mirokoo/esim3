@@ -1,5 +1,5 @@
 <FORM action="paivita_asiakkaat" method="POST">
-<TABLE BORDER=1>
+<TABLE class="table table-striped table-bordered">
 <TR><TH>Etunimi</TH><TH>Sukunimi</TH><TH>Sähköposti</TH></TR>
 <?php
 foreach ($asiakkaat as $rivi) {
@@ -12,5 +12,6 @@ foreach ($asiakkaat as $rivi) {
 }
 ?>
 </TABLE>
-	<input type="submit" name="btnTallenna" value="Tallenna">
+	<a href="<?php echo site_url('asiakas/listaa');?>" class="btn btn-primary" role="button">Peruuta</a>
+	<input class="btn btn-primary" type="submit" name="btnTallenna" value="Tallenna" >
 </FORM>

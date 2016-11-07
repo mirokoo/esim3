@@ -1,6 +1,6 @@
 <h1>Valitun asiakkaan tilaukset</h1>
 <form method="POST" action="etsi_tilaus">
-<select name="valittu_id">
+<select class="form-control" style=width:300px  name="valittu_id">
 <?php
 foreach ($asiakkaat as $rivi) {
 	echo '<option value="'.$rivi['id_asiakas'].'">'.
@@ -9,7 +9,8 @@ foreach ($asiakkaat as $rivi) {
 }
 ?>
 </select>
-<input type="submit" name="btnEtsi" value="Etsi"/>
+<br>
+<input class="btn btn-primary" type="submit" name="btnEtsi" value="Etsi"/>
 </form>
 <br>
 <?php

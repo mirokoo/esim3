@@ -72,7 +72,7 @@ public function nayta_muokattavat_asiakkaat() {
 public function paivita_asiakkaat() {
 	$btn=$this->input->post('btnTallenna');
 	//jos tallenna painiketta painettu
-	//if (isset($btn))
+	if (isset($btn))
 	 {
 		$id=$this->input->post('id');
 		$enimi=$this->input->post('en');
@@ -95,6 +95,29 @@ public function paivita_asiakkaat() {
 		}
 		$this->listaa();
 	}
+}
+
+public function nayta_muokattava_asiakas($id) {
+	$data['asiakas']=$this->Asiakas_model->getValittuAsiakas($id);
+	$data['sivun_sisalto']='asiakas/nayta_muokattava_asiakas';
+	$this->load->view('menu/sisalto',$data);
+}
+
+public function paivita_asiakas(){
+	$btn=$this->input->post('btnTallenna');
+	//jos tallenna painiketta painettu
+	if(isset($btn))
+	 {
+	 	$id=$this->input->post('id');
+		$update_data = array(
+		"etunimi"=>$this->input->post('en'),
+		"sukunimi"=>$this->input->post('sn'),
+		"email"=>$this->input->post('email')
+		);
+		 $testi= $this->Asiakas_model->updateAsiakas($update_data,$id);
+		 $this->listaa();
+	}
+
 }
 
 }
