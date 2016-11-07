@@ -20,4 +20,11 @@ class Asiakas_model extends CI_Model {
 		$testi=$this->db->affected_rows();
 		return $testi;
 	}
+
+	public function updateAsiakas($update_data,$id) {
+		$this->db->where('id_asiakas',$id);
+		$this->db->update('asiakas',$update_data);
+		$testi=$this->db->affected_rows();
+		return $testi;
+	}
 }

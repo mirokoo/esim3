@@ -63,6 +63,38 @@ public function etsi_tilaus() {
 	$this->load->view('menu/sisalto',$data);
 }
 
+public function nayta_muokattavat_asiakkaat() {
+	$data['asiakkaat']=$this->Asiakas_model->getAsiakas();
+	$data['sivun_sisalto']='asiakas/nayta_muokattavat_asiakkaat';
+	$this->load->view('menu/sisalto',$data);
+}
 
+public function paivita_asiakkaat() {
+	$btn=$this->input->post('btnTallenna');
+	//jos tallenna painiketta painettu
+	//if (isset($btn))
+	 {
+		$id=$this->input->post('id');
+		$enimi=$this->input->post('en');
+		$snimi=$this->input->post('sn');
+		$email=$this->input->post('email');
+
+		//lasketaan rivit
+		$lkm=0;
+		foreach ($id as $rivi) {
+			$lkm++;
+		}
+		//päivitetaan tietokantaa rivi kerrallaan
+		for ($x=0; $x<$lkm; $x++) {
+			$update_data= array(
+				"etunimi"=>$enimi[$x],
+				"sukunimi"=>$snimi[$x],
+				"email"=>$email[$x]
+				);
+			$testi= $this->Asiakas_model->updateAsiakas($update_data,$id[$x]);
+		}
+		$this->listaa();
+	}
+}
 
 }
